@@ -6,13 +6,14 @@ class Warrior {
   late int _minDamage;
   late int _maxDamage;
   late String _name;
+  String get name => _name;
   bool _isAlive = true;
   bool get isAlive => _isAlive;
   bool hit(Warrior enemy) {
     int randomDamage = _rng.nextInt(_maxDamage - _minDamage);
     enemy._hp -= _minDamage + randomDamage;
     print(
-        "${_name} hits - ${_minDamage + randomDamage} : enemy hp - ${enemy._hp}");
+        "${_name} hits - ${_minDamage + randomDamage} : enemy hp = ${enemy._hp}");
     if (enemy._hp <= 0) {
       enemy.die();
       return true;
@@ -26,7 +27,6 @@ class Warrior {
   }
 
   void die() {
-    print("I'm dead ($_name)");
     _isAlive = false;
   }
 }
